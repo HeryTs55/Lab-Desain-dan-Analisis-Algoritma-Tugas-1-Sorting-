@@ -16,7 +16,7 @@ void merge(int arr[], int left, int m,  int right) {
     y = 0;
     z = left;
     while (x < n1 && y < n2) {
-        if (L[x] >= R[y]) { // Perubahan: Menggunakan tanda lebih besar atau sama (>=) untuk mengurutkan secara descending
+        if (L[x] >= R[y]) {
             arr[z] = L[x];
             x++;
         }
