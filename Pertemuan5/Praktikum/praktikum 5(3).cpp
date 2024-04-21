@@ -1,61 +1,70 @@
 #include <iostream>
 using namespace std;
 
-class OperasiAritmatika {
+class Calculator {
 private:
-    float a, b;
+    float a;
+    float b;
 
 public:
-    void setA(float nilaiA) {
-        a = nilaiA;
-    }
-
-    void setB(float nilaiB) {
-        b = nilaiB;
+    void setA(float value) {
+        a = value;
     }
 
     float getA() {
         return a;
     }
 
+    void setB(float value) {
+        b = value;
+    }
+
     float getB() {
         return b;
     }
 
-    void hitungOperasi() {
-        float tambah, kurang, kali, bagi;
-        tambah = a + b;
-        kurang = a - b;
-        kali = a * b;
-        try {
-            if (b == 0) {
-                throw "\nError: Pembagian oleh nol tidak dapat dilakukan";
-            }
-            bagi = a / b;
-            cout << "Hasil penjumlahan " << tambah << endl;
-            cout << "Hasil pengurangan " << kurang << endl;
-            cout << "Hasil perkalian " << kali << endl;
-            cout << "Hasil pembagian " << bagi << endl;
-        } catch (const char* error) {
-            cout << error << endl;
+    float tambah() {
+        return a + b;
+    }
+
+    float kurang() {
+        return a - b;
+    }
+
+    float kali() {
+        return a * b;
+    }
+
+    float bagi() {
+        if (b == 0) {
+            throw "Error: Pembagian oleh nol tidak dapat dilakukan";
         }
+        return a / b;
     }
 };
 
 int main() {
-    OperasiAritmatika operasi;
-    float nilaiA, nilaiB;
-
+    Calculator calculator;
+    float a, b;
     cout << "Program Operasi Aritmatika" << endl;
     cout << "Masukkan Nilai A = ";
-    cin >> nilaiA;
-    operasi.setA(nilaiA);
+    cin >> a;
 
     cout << "Masukkan Nilai B = ";
-    cin >> nilaiB;
-    operasi.setB(nilaiB);
+    cin >> b;
+    cout << endl;
 
-    operasi.hitungOperasi();
+    calculator.setA(a);
+    calculator.setB(b);
+
+    try {
+        cout << "Hasil penjumlahan " << calculator.tambah() << endl;
+        cout << "Hasil pengurangan " << calculator.kurang() << endl;
+        cout << "Hasil perkalian " << calculator.kali() << endl;
+        cout << "Hasil pembagian " << calculator.bagi() << endl;
+    } catch (const char* error) {
+        cout << error << endl;
+    }
 
     return 0;
 }
